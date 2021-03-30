@@ -6,7 +6,7 @@ import Chat from "./components/Chat/Chat";
 
 // 1. Router 경로 설정
 const App = () => (
-  <Router>
+  <Router basename={process.env.PUBLIC_URL}>
     <Route path="/lamaChat/" exact component={JoinRoom} />
     <Route path="/lamaChat/chat" component={Chat} />
   </Router>
