@@ -25,7 +25,7 @@ const Chat = ({ location }) => {
 
   const [users, setUsers] = useState("");
 
-  const ENDPOINT = "https://talk--about.herokuapp.com/";
+  const ENDPOINT = "https://talk-about-server.herokuapp.com/";
 
   useEffect(() => {
     // query-string middleware의 사용
