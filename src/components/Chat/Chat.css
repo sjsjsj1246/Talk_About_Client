@@ -8,7 +8,9 @@ body {
 }
 
 .chatOuterContainer {
-  background-image: url("https://source.unsplash.com/1600x900/?peru,lama");
+  background-image: url("https://source.unsplash.com/1600x900/?talk");
+  background-repeat: no-repeat;
+  background-size: cover;
   height: 100vh;
 }
 .chatInnerContainer {

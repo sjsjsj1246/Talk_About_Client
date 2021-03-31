@@ -28,38 +28,23 @@ const Chat = ({ location }) => {
   const ENDPOINT = "https://talk-about-server.herokuapp.com/";
 
   useEffect(() => {
-    // query-string middleware의 사용
-    // const data = queryString.parse(location.search);
-    // console.log(location.search); // ?name=lama&room=peru
-    // console.log(data); // 객체 : {name: "lama", room: "peru"}
-    // 다시 정리
     const { name, room } = queryString.parse(location.search);
 
-    socket = io(ENDPOINT); // 소켓 연결
+    socket = io(ENDPOINT);
 
     setName(name);
     setRoom(room);
 
-    console.log(name, room); // lama peru
+    console.log(name, room);
 
-    // console.log(socket);
     socket.emit("join", { name, room }, (error) => {
-      // console.log("error");
-      // 에러 처리
       if (error) {
         alert(error);
       }
     });
-
-    // return () => {
-    //   socket.emit("disconnect");
-
-    //   socket.off();
-    // };
-  }, [ENDPOINT, location.search]); // 한번만 부른다 // 불필요한 사이드 이펙트를 줄인다
+  }, [ENDPOINT, location.search]);
 
   useEffect(() => {
-    // 서버에서 message 이벤트가 올 경우에 대해서 `on`
     socket.on("message", (message) => {
       setMessages([...messages, message]);
     });
@@ -69,7 +54,6 @@ const Chat = ({ location }) => {
     });
   }, [messages]);
 
-  // 메세지 보내기 함수
   const sendMessage = (e) => {
     e.preventDefault();
     if (message) {
@@ -80,10 +64,6 @@ const Chat = ({ location }) => {
   console.log(message, messages);
   console.log(users, "users");
 
-  // return <h1>Chat</h1>;
-  // 1.roominfo
-  // 2.messages
-  // 3.input
   return (
     <div className="chatOuterContainer">
       <div className="chatInnerContainer">
@@ -91,9 +71,9 @@ const Chat = ({ location }) => {
           <AppBar color="primary">
             <Toolbar className="toolBar">
               <Typography variant="h4" color="inherit" noWrap>
-                LamaChat
+                Chat About
               </Typography>
-              <Button color="inherit" href="/lamaChat">
+              <Button color="inherit" href="/">
                 close
               </Button>
             </Toolbar>
