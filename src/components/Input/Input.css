@@ -19,3 +19,9 @@
   width: 10rem;
   height: 7vh;
 }
+
+@media screen and (max-width: 768px) {
+  .inputButton {
+    height: 100%;
+  }
+}
