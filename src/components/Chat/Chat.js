@@ -14,6 +14,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
+import { Avatar } from "@material-ui/core";
 
 let socket;
 
@@ -23,7 +24,7 @@ const Chat = ({ location }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
 
-  const [users, setUsers] = useState("");
+  const [users, setUsers] = useState([]);
 
   const ENDPOINT = "https://talk-about-server.herokuapp.com/";
 
@@ -34,8 +35,6 @@ const Chat = ({ location }) => {
 
     setName(name);
     setRoom(room);
-
-    console.log(name, room);
 
     socket.emit("join", { name, room }, (error) => {
       if (error) {
@@ -64,9 +63,6 @@ const Chat = ({ location }) => {
     [message]
   );
 
-  console.log(message, messages);
-  console.log(users, "users");
-
   return (
     <div className="chatOuterContainer">
       <div className="chatInnerContainer">
@@ -85,7 +81,17 @@ const Chat = ({ location }) => {
         <div className="chatScreen">
           <Paper elevation={5} className="chatScreenPaper">
             <RoomInfo room={room} />
-            <Messages messages={messages} name={name} />
+            <div className="msgBox">
+              <Messages messages={messages} name={name} />
+              <div className="userList">
+                {users.map((user) => (
+                  <div className="userItem">
+                    <p key={user.name}>{user.name}</p>
+                    <Avatar className="icon"></Avatar>
+                  </div>
+                ))}
+              </div>
+            </div>
             <Input
               message={message}
               setMessage={setMessage}

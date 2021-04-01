@@ -1,41 +1,32 @@
-.messageBox {
-  /* flex: 3; */
-  background: #f3f3f3;
-  border-radius: 20px;
-  padding: 0 20px;
-  margin: 0 0.5rem;
-  color: red;
-  max-width: 80%;
-  height: 2.5rem;
+.messageContainer {
   display: flex;
   align-items: center;
+  padding: 0.3rem 0.5rem;
+  margin-top: 3px;
+}
+
+.messageBox {
+  background: #f3f3f3;
+  border-radius: 10px;
+  padding: 0 20px;
+  margin: 0 0.3rem;
+  height: fit-content;
 }
 
 .messageText {
+  padding: 0.5rem 0;
   margin: 0;
-  width: 100%;
-  letter-spacing: 0;
-  float: left;
   font-size: 1.1em;
   word-wrap: break-word;
 }
 
-.messageContainer {
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0.1rem 0.5rem;
-  margin-top: 3px;
-}
-
-.sentAvatar {
-}
-
 .sentMessage {
+  width: fit-content;
   margin: 0 0.3rem;
   padding: 0;
-  display: flex;
-  align-items: center;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: content;
 }
 
 .start {
@@ -55,7 +46,7 @@
 }
 
 .backgroundBlue {
-  background: #3f51b5;
+  background: #131836;
 }
 
 .backgroundLight {

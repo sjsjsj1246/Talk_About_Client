@@ -1,12 +1,3 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-}
-
-#root {
-}
-
 .chatOuterContainer {
   background-image: url("https://source.unsplash.com/1600x900/?talk");
   background-repeat: no-repeat;
@@ -20,28 +11,47 @@ body {
   align-items: center;
 }
 
-.appbar {
-  /* display: flex;
-  flex-direction: column; */
+.msgBox {
+  height: 70vh;
+  display: flex;
 }
+
+.userList {
+  width: 10rem;
+  border-left: 1px solid rgb(63, 81, 181);
+  background-color: white;
+  text-align: right;
+  font-weight: bold;
+  -webkit-box-shadow: inset 5px 0px 5px -2px rgba(0, 0, 0, 0.2);
+  -moz-box-shadow: inset 5px 0px 5px -2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 5px 0px 5px -2px rgba(0, 0, 0, 0.2);
+}
+
+.userItem {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1rem;
+}
+
+.icon {
+  width: 1rem;
+}
+
 .toolBar {
   justify-content: space-between;
   margin: 10px;
 }
 
 .chatScreen {
-  height: 70vh;
-  width: 50vh;
+  height: 80vh;
+  width: 70vw;
   display: flex;
 }
 .chatScreenPaper {
-  /* margin: 10px; */
-  /* padding: 20px; */
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
 }
 
 @media screen and (max-width: 768px) {

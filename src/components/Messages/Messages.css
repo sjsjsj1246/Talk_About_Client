@@ -1,5 +1,5 @@
 .messages {
-  flex: 5;
+  flex: 1;
   padding: 5% 1%;
   overflow: auto;
   -ms-overflow-style: none;

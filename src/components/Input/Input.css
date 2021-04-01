@@ -8,12 +8,12 @@
   border: none;
   border-radius: 0;
   padding: 5%;
-  width: 80%;
+  flex: 1;
   font-size: 1.2em;
 }
 
 .inputButton {
   background-color: #90caf9;
   padding: 20px;
-  width: 20%;
+  width: 10rem;
 }
