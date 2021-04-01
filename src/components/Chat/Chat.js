@@ -84,16 +84,19 @@ const Chat = ({ location }) => {
   return (
     <div className="chatOuterContainer">
       <div className="chatInnerContainer">
-        <AppBar className="appbar" color="primary">
-          <Toolbar className="toolBar">
-            <Typography variant="h4" color="inherit" noWrap>
-              Talk About
-            </Typography>
-            <Button color="inherit" href="/">
-              close
-            </Button>
-          </Toolbar>
-        </AppBar>
+        <div className="appbar">
+          <AppBar className="appbar" color="primary">
+            <Toolbar className="toolBar">
+              <Typography variant="h4" color="inherit" noWrap>
+                Talk About
+              </Typography>
+              <Button color="inherit" href="/">
+                close
+              </Button>
+            </Toolbar>
+          </AppBar>
+        </div>
+
         <div className="chatScreen">
           <Paper elevation={5} className="chatScreenPaper">
             <RoomInfo room={room} />
