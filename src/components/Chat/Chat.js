@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useReducer } from "react";
+import React, { useEffect, useState, useReducer, useCallback } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 import "./Chat.css";
@@ -42,24 +42,27 @@ const Chat = ({ location }) => {
         alert(error);
       }
     });
-  }, [ENDPOINT, location.search]);
+  }, []);
 
   useEffect(() => {
     socket.on("message", (message) => {
-      setMessages([...messages, message]);
+      setMessages((messages) => [...messages, message]);
     });
 
     socket.on("roomData", ({ users }) => {
       setUsers(users);
     });
-  }, [messages]);
+  }, []);
 
-  const sendMessage = (e) => {
-    e.preventDefault();
-    if (message) {
-      socket.emit("sendMessage", message, setMessage(""));
-    }
-  };
+  const sendMessage = useCallback(
+    (e) => {
+      e.preventDefault();
+      if (message) {
+        socket.emit("sendMessage", message, setMessage(""));
+      }
+    },
+    [message]
+  );
 
   console.log(message, messages);
   console.log(users, "users");

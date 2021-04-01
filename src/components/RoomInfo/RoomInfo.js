@@ -25,4 +25,4 @@ function RoomInfo({ room }) {
   );
 }
 
-export default RoomInfo;
+export default React.memo(RoomInfo);
