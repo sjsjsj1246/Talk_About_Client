@@ -8,9 +8,7 @@ const Messages = ({ messages, name }) => {
   return (
     <div id="message" className="messages">
       {messages.map((message, i) => (
-        <div key={i}>
-          <Message message={message} name={name} />
-        </div>
+        <Message message={message} name={name} />
       ))}
     </div>
   );

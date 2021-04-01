@@ -1,4 +1,6 @@
-import React, { useEffect, useState, useReducer, useCallback } from "react";
+/** @jsx jsx */
+import { jsx, css } from "@emotion/react";
+import React, { useEffect, useState, useCallback } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
 import "./Chat.css";
@@ -14,19 +16,36 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
-import { Avatar } from "@material-ui/core";
+import { Avatar, makeStyles } from "@material-ui/core";
 
 let socket;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: "flex",
+    "& > *": {
+      margin: theme.spacing(1),
+    },
+  },
+  small: {
+    width: theme.spacing(3),
+    height: theme.spacing(3),
+  },
+  large: {
+    width: theme.spacing(7),
+    height: theme.spacing(7),
+  },
+}));
 
 const Chat = ({ location }) => {
+  const classes = useStyles();
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-
   const [users, setUsers] = useState([]);
 
-  const ENDPOINT = "https://talk-about-server.herokuapp.com/";
+  // const ENDPOINT = "https://talk-about-server.herokuapp.com/";
+  const ENDPOINT = "http://localhost:5000/";
 
   useEffect(() => {
     const { name, room } = queryString.parse(location.search);
@@ -66,18 +85,16 @@ const Chat = ({ location }) => {
   return (
     <div className="chatOuterContainer">
       <div className="chatInnerContainer">
-        <div className="appbar">
-          <AppBar color="primary">
-            <Toolbar className="toolBar">
-              <Typography variant="h4" color="inherit" noWrap>
-                Chat About
-              </Typography>
-              <Button color="inherit" href="/">
-                close
-              </Button>
-            </Toolbar>
-          </AppBar>
-        </div>
+        <AppBar className="appbar" color="primary">
+          <Toolbar className="toolBar">
+            <Typography variant="h4" color="inherit" noWrap>
+              Talk About
+            </Typography>
+            <Button color="inherit" href="/">
+              close
+            </Button>
+          </Toolbar>
+        </AppBar>
         <div className="chatScreen">
           <Paper elevation={5} className="chatScreenPaper">
             <RoomInfo room={room} />
@@ -86,8 +103,13 @@ const Chat = ({ location }) => {
               <div className="userList">
                 {users.map((user) => (
                   <div className="userItem">
-                    <p key={user.name}>{user.name}</p>
-                    <Avatar className="icon"></Avatar>
+                    <p className="userName">{user.name}</p>
+                    <Avatar
+                      css={css`
+                        background-color: ${user.color};
+                      `}
+                      className={classes.small}
+                    ></Avatar>
                   </div>
                 ))}
               </div>
